@@ -1,6 +1,6 @@
 export default function Contact() {
   return (
-    <section id="contact">
+    <section id="contact" >
       <div className="wrap">
         <div className="contact-card reveal">
           <svg className="deco d1" viewBox="0 0 120 120" fill="none" aria-hidden="true"><circle cx="60" cy="60" r="55" stroke="#fff" strokeWidth="4" strokeDasharray="10 10" /></svg>

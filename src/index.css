@@ -378,3 +378,161 @@ section { padding: 62px 0; }
 
 footer { text-align: center; padding: 38px 0 48px; color: var(--ink-soft); font-size: 0.9rem; }
 footer .accent { color: var(--periwinkle-deep); }
+
+
+/* ---------- EDUCATION (one compact section, two columns) ---------- */
+.edu-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.edu-grid .edu-col:first-child{
+  border-right: 1px dashed var(--line);
+  padding-right: 48px;
+}
+@media (max-width: 700px){
+  .edu-grid{ grid-template-columns: 1fr; gap: 34px 0; }
+  .edu-grid .edu-col:first-child{ border-right:none; padding-right:0; border-bottom:1px dashed var(--line); padding-bottom:8px; }
+}
+
+.edu-col-label{
+  font-family:'Kalam', cursive;
+  font-size: 0.92rem;
+  color: var(--periwinkle-deep);
+  display:block;
+  margin-bottom: 10px;
+  transform: rotate(-1deg);
+}
+
+.edu-list{ display:flex; flex-direction:column; }
+
+.edu-row{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:9px 0;
+  transition: padding-left .2s ease;
+}
+.edu-row:hover{ padding-left:6px; }
+
+.edu-dot{
+  width:6px; height:6px; margin-top:7px; flex:none;
+  border-radius:50%;
+  background: var(--periwinkle);
+}
+
+.edu-main{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+
+.edu-title{
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+}
+.edu-tag{
+  font-style: normal;
+  font-family:'Kalam', cursive;
+  font-size: 0.68rem;
+  color: var(--periwinkle-deep);
+  background: var(--paper-warm);
+  border: 1px dashed var(--periwinkle);
+  padding: 1px 8px;
+  border-radius: 100px;
+}
+.edu-sub{
+  font-size: 0.83rem;
+  color: var(--ink-soft);
+  line-height:1.4;
+}
+
+/* ---------- BOOKS (a stylish stack, spines rounded like real bindings) ---------- */
+.book-stack{
+  max-width: 380px;
+  margin: 40px auto 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.spine{
+  width: 100%;
+  height: 56px;
+  border-radius: 10px 10px 10px 10px;
+  padding: 0 22px 0 26px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  color:#fff;
+  box-shadow: 0 4px 8px rgba(34,38,46,0.28);
+  position:relative;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* stacked with zero rotation — each spine sits flush and aligned on the one below */
+.spine:nth-child(1){ z-index:3; }
+.spine:nth-child(2){ z-index:2; margin-top:-1px; margin-right: 40px;}
+.spine:nth-child(3){ z-index:1; margin-top:-1px; margin-right: 20px;}
+
+.spine:hover{ transform: translateY(-6px) rotate(0deg) !important; box-shadow: 0 16px 22px rgba(34,38,46,0.28); z-index:5; }
+
+/* rounded spine-binding ridge near the left curve, like a real hardcover */
+.spine::before{
+  content:'';
+  position:absolute; left:14px; top:8px; bottom:8px; width:2px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 2px;
+}
+/* page-block highlight on the right edge */
+.spine::after{
+  content:'';
+  position:absolute; right:0; top:4px; bottom:4px; width:7px;
+  background: rgba(255,255,255,0.32);
+  border-radius: 0 10px 10px 0;
+}
+
+.spine-periwinkle{ background: linear-gradient(100deg, var(--periwinkle-deep), var(--periwinkle)); }
+.spine-coral{ background: linear-gradient(100deg, #E85C3B, var(--coral)); }
+
+.spine-title{
+  font-weight: 600;
+  font-size: 0.96rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+}
+
+.spine-author{
+  font-family:'Kalam', cursive;
+  font-size: 0.84rem;
+  opacity: 0.88;
+  white-space: nowrap;
+  flex: none;
+  padding-right: 6px;
+}
+
+/* dashed placeholder spine at the bottom of the stack */
+.spine-next{
+  background: repeating-linear-gradient(135deg, var(--paper-warm), var(--paper-warm) 8px, #fff 8px, #fff 16px);
+  border: 2px dashed var(--line);
+  color: var(--ink-soft);
+  box-shadow:none;
+  justify-content:center;
+  margin-top:-1px;
+}
+.spine-next::before, .spine-next::after{ display:none; }
+.spine-next-label{
+  font-family:'Kalam', cursive;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 480px){
+  .spine{ height:48px; padding:0 16px 0 22px; }
+  .spine-title{ font-size:0.84rem; padding-left:6px; }
+  .spine-author{ font-size:0.74rem; }
+  .book-stack{
+  max-width: 320px;}
+}

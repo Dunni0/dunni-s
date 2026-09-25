@@ -6,6 +6,8 @@ import Work from './components/Work'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
+import Education from './components/Education'
+import Books from './components/Books'
 
 export default function App() {
   const progressRef = useRef(null)
@@ -51,6 +53,8 @@ export default function App() {
       <Work />
       <Skills />
       <Experience />
+      <Education />
+      <Books />
       <Contact />
       <footer>
         {/* <span className="accent">Dunni</span> — built with React &amp; Vite */}
