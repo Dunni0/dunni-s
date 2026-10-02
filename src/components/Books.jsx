@@ -9,6 +9,11 @@ const books = [
     author: 'Aiwanose Odafen',
     hue: 'coral',
   },
+  {
+    title: 'Me Before You',
+    author: 'Jojo Moyes',
+    hue: 'mint',
+  }
 ]
 
 export default function Books() {
