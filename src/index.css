@@ -497,6 +497,7 @@ footer .accent { color: var(--periwinkle-deep); }
 .spine-coral{ background: linear-gradient(100deg, #E85C3B, var(--coral)); }
 .spine-mint{ background: linear-gradient(100deg, #2FA88A, var(--mint)); }
 
+
 .spine-title{
   font-weight: 600;
   font-size: 0.96rem;
