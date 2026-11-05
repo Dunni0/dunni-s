@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const projects = [
   {
     title: 'ChurchPad', tag: 'work',
@@ -33,6 +35,14 @@ const projects = [
 ]
 
 export default function Work() {
+  const [filter, setFilter] = useState('all')
+  const filters = [
+    { id: 'all', label: 'Everything' },
+    { id: 'work', label: 'At work' },
+    { id: 'side project', label: 'Side projects' },
+  ]
+  const visibleProjects = projects.filter(project => filter === 'all' || project.tag === filter)
+
   return (
     <section id="work" className="has-stars">
       <div className="wrap">
@@ -41,8 +51,24 @@ export default function Work() {
           <h2>Things I've built <span className="emo">🚀</span></h2>
           <p>A handful of projects, from client work to weekend experiments.</p>
         </div>
+        <div className="project-controls" role="group" aria-label="Filter projects">
+          {filters.map(option => (
+            <button
+              key={option.id}
+              type="button"
+              className={`project-filter${filter === option.id ? ' selected' : ''}`}
+              aria-pressed={filter === option.id}
+              onClick={() => setFilter(option.id)}
+            >
+              {option.label}
+            </button>
+          ))}
+          <span className="project-count" aria-live="polite">
+            {visibleProjects.length} {visibleProjects.length === 1 ? 'project' : 'projects'}
+          </span>
+        </div>
         <div className="projects reveal stagger">
-          {projects.map(p => (
+          {visibleProjects.map(p => (
             <div className="card" key={p.title}>
               <div className="card-top">
                 <h3>{p.title}</h3>

@@ -46,18 +46,21 @@ export default function App() {
 
   return (
     <>
+      <a className="skip-link" href="#main">Skip to content</a>
       <div className="progress" ref={progressRef} aria-hidden="true" />
       <Nav activeSection={activeSection} />
-      <Hero />
-      <About />
-      <Work />
-      <Skills />
-      <Experience />
-      <Education />
-      <Books />
-      <Contact />
-      <footer>
-        {/* <span className="accent">Dunni</span> — built with React &amp; Vite */}
+      <main id="main">
+        <div id="top"><Hero /></div>
+        <About />
+        <Work />
+        <Skills />
+        <Experience />
+        <Education />
+        <Books />
+        <Contact />
+      </main>
+      <footer className="site-footer">
+        <a href="#top">Back to the top ↑</a>
       </footer>
     </>
   )
