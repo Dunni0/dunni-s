@@ -4,7 +4,7 @@ export default function Nav({ activeSection }) {
   const [open, setOpen] = useState(false)
   const navRef = useRef(null)
   const menuRef = useRef(null)
-  const links = ['about', 'work', 'skills', 'experience', 'contact']
+  const links = ['about', 'work', 'skills', 'experience', 'education', 'books', 'contact']
 
   useEffect(() => {
     const update = () => {
@@ -31,11 +31,20 @@ export default function Nav({ activeSection }) {
     return () => document.removeEventListener('mousedown', close)
   }, [open])
 
+  useEffect(() => {
+    if (!open) return
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', closeOnEscape)
+    return () => document.removeEventListener('keydown', closeOnEscape)
+  }, [open])
+
   return (
     <>
       <nav ref={navRef}>
         <div className="wrap">
-          <div className="brand"><span className="dot" />OA</div>
+          <a className="brand" href="#top" aria-label="Oluwapelumi, back to top"><span className="dot" />OA<span className="brand-period">.</span></a>
           <div className="nav-links">
             {links.map(l => (
               <a key={l} href={`#${l}`} className={activeSection === l ? 'active' : ''}>
